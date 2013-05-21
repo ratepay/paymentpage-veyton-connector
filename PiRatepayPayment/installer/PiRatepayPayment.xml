@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xtcommerceplugin>
+    <title>Ratepay payment module</title>
+    <version>1.0.5</version>
+    <code>PiRatepayPayment</code>
+    <url>http://www.payintelligent.de</url>
+    <description>Ratepay Payment Module</description>
+    <icon>ratepayLogo.png</icon>
+    <type>payment</type>
+    <sql_install/>
+    <sql_uninstall/>
+    <db_install><![CDATA[
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 24, '', 0, 10000.00, 0, 1);");
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 25, '', 0, 10000.00, 0, 1);");
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 26, '', 0, 10000.00, 0, 1);");
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 27, '', 0, 10000.00, 0, 1);");
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 28, '', 0, 10000.00, 0, 1);");
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 29, '', 0, 10000.00, 0, 1);");
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 30, '', 0, 10000.00, 0, 1);");
+     $db->Execute("INSERT INTO ".TABLE_PAYMENT_COST." (`payment_id`, `payment_geo_zone`, `payment_country_code`, `payment_type_value_from`, `payment_type_value_to`, `payment_price`,`payment_allowed`) VALUES(".$payment_id.", 31, '', 0, 10000.00, 0, 1);");
+]]>
+    </db_install>
+    <payment>
+        <payment_code>PiRatepayPayment</payment_code>
+        <payment_dir>PiRatepayPayment</payment_dir>
+        <payment_icon>ratepayLogo.png</payment_icon>
+        <payment_tpl>PiRatepayPayment.html</payment_tpl>
+        <de>
+            <title>RatePAY</title>
+            <description>Zahlen Sie mit Rechnungs- oder Ratenkauf</description>
+        </de>
+        <en>
+            <title>RatePAY</title>
+            <description>Pay with invoice-, rate- or debit- payment</description>
+        </en>
+    </payment>
+    <configuration_payment>    
+        <config>
+            <key>PROFILE_ID</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>1</sort_order>
+            <de>
+                <title>Profil ID</title>
+            </de>
+            <en>
+                <title>Profil ID</title>
+            </en>
+        </config>  
+        <config>
+            <key>SECRET</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>2</sort_order>
+            <de>
+                <title>Security Code</title>
+            </de>
+            <en>
+                <title>Security Code</title>
+            </en>
+        </config>  
+        <config>
+            <key>SANDBOX</key>
+            <value></value>
+            <type>status</type>
+            <sort_order>3</sort_order>
+            <de>
+                <title>Sandbox</title>
+            </de>
+            <en>
+                <title>Sandbox</title>
+            </en>
+        </config>     
+  
+        <config>
+            <key>EDIT_CUSTOMER</key>
+            <value></value>
+            <type>status</type>
+            <sort_order>4</sort_order>
+            <de>
+                <title>Aktivieren ob der Kunde seine Daten noch auf der Paypage ändern kann </title>
+            </de>
+            <en>
+                <title>Activate if customer can change date on paypage</title>
+            </en>
+        </config> 
+        <config>
+            <key>DISABLE_ITEM</key>
+            <value></value>
+            <type>status</type>
+            <sort_order>5</sort_order>
+            <de>
+                <title>Aktivieren um die Detaillierte Artikelansicht auf der Paypage zu deaktivieren</title>
+            </de>
+            <en>
+                <title>aktivate to disable item details on paypage</title>
+            </en>
+        </config>
+        <config>
+            <key>AGB</key>
+            <value>http://</value>
+            <type>textfield</type>
+            <sort_order>10</sort_order>
+            <de>
+                <title>RatePAY-Datenschutzerklärung URL(mit http(s)://</title>
+            </de>
+            <en>
+                <title>RatePAY-Datenschutzerklärung URL(mit http(s)://</title>
+            </en>
+        </config>
+        <config>
+            <key>BASKET_MIN</key>
+            <value>20</value>
+            <type>textfield</type>
+            <sort_order>13</sort_order>
+            <de>
+                <title>Warenkorb Mindestbetrag für RatePAY Zahlungsarten in €</title>
+            </de>
+            <en>
+                <title>Warenkorb Mindestbetrag für RatePAY Zahlungsarten in €</title>
+            </en>
+        </config> 
+        <config>
+            <key>BASKET_MAX</key>
+            <value>500</value>
+            <type>textfield</type>
+            <sort_order>14</sort_order>
+            <de>
+                <title>Warenkorb Maximalbetrag für RatePAY Zahlungsarten in €</title>
+            </de>
+            <en>
+                <title>Warenkorb Maximalbetrag für RatePAY Zahlungsarten in €</title>
+            </en>
+        </config> 
+        <config>
+            <key>MERCHANT_NAME</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>15</sort_order>
+            <de>
+                <title>Name des Händlers</title>
+            </de>
+            <en>
+                <title>Merchant name</title>
+            </en>
+        </config>
+        <config>
+            <key>MERCHANT_STREET</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>16</sort_order>
+            <de>
+                <title>Strasse des Händlers</title>
+            </de>
+            <en>
+                <title>Merchant street</title>
+            </en>
+        </config>
+        <config>
+            <key>MERCHANT_ZIP</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>17</sort_order>
+            <de>
+                <title>Postleitzahl des Händlers</title>
+            </de>
+            <en>
+                <title>Merchant postcode</title>
+            </en>
+        </config>
+        <config>
+            <key>MERCHANT_CITY</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>18</sort_order>
+            <de>
+                <title>Stadt des Händlers</title>
+            </de>
+            <en>
+                <title>Merchant city</title>
+            </en>
+        </config>
+        <config>
+            <key>MERCHANT_PHONE</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>19</sort_order>
+            <de>
+                <title>Telefonnummer des Händlers</title>
+            </de>
+            <en>
+                <title>Merchant phone number</title>
+            </en>
+        </config>
+        <config>
+            <key>MERCHANT_FAX</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>20</sort_order>
+            <de>
+                <title>Faxnummer des Händlers</title>
+            </de>
+            <en>
+                <title>Merchant fax number</title>
+            </en>
+        </config>
+        <config>
+            <key>MERCHANT_MAIL</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>21</sort_order>
+            <de>
+                <title>Mailadresse des Händlers</title>
+            </de>
+            <en>
+                <title>Merchant mail</title>
+            </en>
+        </config>
+        <config>
+            <key>COMPANY_NAME</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>25</sort_order>
+            <de>
+                <title>Begünstigte Firma</title>
+            </de>
+            <en>
+                <title>Begünstigte Firma</title>
+            </en>
+        </config>
+        <config>
+            <key>BANK_CREDIT</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>26</sort_order>
+            <de>
+                <title>Kreditinstitut</title>
+            </de>
+            <en>
+                <title>Kreditinstitut</title>
+            </en>
+        </config>
+        <config>
+            <key>BANK_LOCATION</key>
+            <value></value>
+            <type>textfield</type>
+            <sort_order>27</sort_order>
+            <de>
+                <title>Sitz der Bank</title>
+            </de>
+            <en>
+                <title>Location of the bank</title>
+            </en>
+        </config>
+        <config>
+            <key>STATUS_SUCCESS</key>
+            <type>dropdown</type>
+            <url>status:order_status</url>
+            <de>
+                <title>Status nach erfolgreicher Bestellung</title>
+            </de>
+            <en>
+                <title>Status nach erfolgreicher Bestellung</title>
+            </en>
+        </config>
+    </configuration_payment>
+    <language_content/>
+    <plugin_code>
+        <code>
+            <hook>class.payment.php:_filterCountry_top</hook>
+            <phpcode><![CDATA[
+                if ($data['payment_code'] == 'PiRatepayPayment') {
+                    global $currency;
+                    require_once('plugins/PiRatepayPayment/classes/class.PiRatepayPayment.php'); 
+                }
+            ]]>
+            </phpcode>
+            <order>1</order>
+            <active>1</active>
+        </code>
+        <code>
+            <hook>module_checkout.php:checkout_process_data</hook>
+            <phpcode><![CDATA[
+                 if ($payment_code == 'PiRatepayPayment') {
+                        $payment_module_data->goToPaypage($order_data, $payment_module_data);
+                 }
+            ]]>
+            </phpcode>
+            <order>1</order>
+            <active>1</active>
+        </code> 
+        <code>
+            <hook>module_checkout.php:checkout_page_actions</hook>
+            <phpcode><![CDATA[
+                if(($page->page_action=='success' || $page->page_action== 'pay') &&  $_SESSION['ratepay']['orderdata']['payment_code'] == 'PiRatepayPayment' ){
+                    $p_data = $checkout->_getPayment();
+                    $payment_info = $p_data[$_SESSION['selected_payment']];
+                    $payment_class_path = _SRV_WEBROOT._SRV_WEB_PLUGINS.$payment_info['payment_dir'].'/classes/';
+                    $payment_class_file = 'class.'.$payment_info['payment_code'].'.php';
+                    require_once($payment_class_path.$payment_class_file);
+                    $payment_module_data = new $payment_info['payment_code']();
+                    if($page->page_action== 'pay'){
+                        $payment_module_data->checkRatepayResult();
+                    }elseif($page->page_action== 'success'){ 
+                        $payment_module_data->checkCustomerData();
+                    }
+                }elseif($page->page_action== 'pay_frame' && $_SESSION['ratepay']['orderdata']['payment_code'] == 'PiRatepayPayment'){
+                    return $checkout_data = array_merge($checkout_data,array('psp_target'=>$_SESSION['ratepay']['resulturl']));
+                }
+            ]]>
+            </phpcode>
+            <order>1</order>
+            <active>1</active>
+        </code>
+    </plugin_code>
+</xtcommerceplugin>

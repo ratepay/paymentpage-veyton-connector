@@ -1,0 +1,30 @@
+{if $hide_ratepay == false}
+<table class="paymentblock" width="100%" border="0" cellspacing="0" cellpadding="6">
+    <tr>
+    {if $ratepay_error}
+        <td class="header"><strong>{$ratepay_payment_name}</strong></td>
+        <td class="header">{$ratepay_error}</td>
+        <td class="header" align="right"></td>
+    </tr>
+    {else}
+        {if $payment_selected=='' || ($payment_selected=="$payment_code:ratepay")}
+    <td class="header" width="10">
+        {form type=radio name=selected_payment value=$payment_code:ratepay checked=true} 
+        RatePAY
+    </td>
+        {else}
+    <td class="header" width="10">
+        {form type=radio name=selected_payment value=$payment_code:ratepay} 
+        RatePAY
+    </td>
+        {/if}
+    <tr>
+        <td class="main" style="float: left;">
+            <strong>{$ratepay_payment_name}</strong>
+            <p>Sie werden zur RatePAY-Payment Page weitergeleitet wenn Sie die Bestellung abschließen.</p>
+        </td>
+    </tr>
+</tr>
+    {/if}         
+</table>
+{/if}
