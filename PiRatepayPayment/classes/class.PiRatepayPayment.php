@@ -409,7 +409,8 @@ class PiRatepayPayment
                         'currency' => $_SESSION['ratepay']['currency'],
                         'profile_id' => PIRATEPAYPAYMENT_PROFILE_ID,
                         'security_code' => PIRATEPAYPAYMENT_SECRET,
-                        'token' => $_SESSION['ratepay']['transactionToken']
+                        'token' => $_SESSION['ratepay']['transactionToken'],
+                        'order_id' => $_SESSION['ratepay']['orderID']
                 )),
                 'id' => md5(PIRATEPAYPAYMENT_PROFILE_ID . PIRATEPAYPAYMENT_SECRET . $_SESSION['ratepay']['orderID'])
             );
